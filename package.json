@@ -2,7 +2,7 @@
   "name": "twistin",
   "version": "1.0.0",
   "description": "Twistin - Agrégateur de vidéo",
-  "main": "public/index.html",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,7 @@
     "clean-css-brunch": "^1.7.2",
     "css-brunch": "^1.7.0",
     "javascript-brunch": "^1.7.1",
-    "sass-brunch": "^1.8.10"
+    "sass-brunch": "^1.8.10",
+    "uglify-js-brunch": "^1.7.7"
   }
 }

@@ -1,9 +1,11 @@
 {
-  "name": "Twistin",
+  "name": "twistin",
   "version": "1.0.0",
   "authors": [
     "willy <willypoteloin@yahoo.fr>"
   ],
+  "description": "Twistin - Agrégateur de vidéo",
+  "main": "public/index.html",
   "license": "MIT",
   "ignore": [
     "**/.*",

@@ -1,9 +1,9 @@
 {
   "name": "jquery.pep",
   "homepage": "https://github.com/briangonzalez/jquery.pep.js",
+"main" : "src/jquery.pep.js",
   "version": "0.6.3",
-  "main": "src/jquery.pep.js",
-"_release": "0.6.3",
+  "_release": "0.6.3",
   "_resolution": {
     "type": "version",
     "tag": "v0.6.3",
@@ -11,5 +11,6 @@
   },
   "_source": "git://github.com/briangonzalez/jquery.pep.js.git",
   "_target": "~0.6.3",
-  "_originalSource": "jquery.pep"
+  "_originalSource": "jquery.pep",
+  "_direct": true
 }

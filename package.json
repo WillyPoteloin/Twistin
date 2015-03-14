@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browser-sync-brunch": "0.0.9",
     "brunch": "^1.7.20",
     "clean-css-brunch": "^1.7.2",
     "css-brunch": "^1.7.0",

@@ -1,18 +1,19 @@
 {
-	"name": "twistin",
-	"version": "0.0.1",
-	"description": "Mix your favorites videos",
-	"dependencies": {
-		"bootstrap": "~3",
-		"angular": "~1.2",
-		"angular-resource": "~1.2",
-		"angular-mocks": "~1.2",
-		"angular-cookies": "~1.2",
-		"angular-animate": "~1.2",
-		"angular-touch": "~1.2",
-		"angular-sanitize": "~1.2",
-		"angular-bootstrap": "~0.11.2",
-		"angular-ui-utils": "~0.1.1",
-		"angular-ui-router": "~0.2.11"
-	}
+  "name": "Twistin",
+  "version": "1.0.0",
+  "authors": [
+    "willy <willypoteloin@yahoo.fr>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.1",
+    "jquery.pep": "~0.6.3"
+  }
 }

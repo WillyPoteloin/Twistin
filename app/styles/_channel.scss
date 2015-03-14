@@ -1,0 +1,24 @@
+.channels {
+	margin-top: 25px;
+	text-align: center;
+	.channel {
+		display: inline-block;
+		width: 95px;
+		height: 95px;	
+		@include border-radius(95px);
+		background-color: $orange;
+		margin: 10px;
+
+		img {
+			display: block;
+			@include border-radius(95px);
+			height: 100%;
+			width: 100%;
+		}
+		
+		&.small {
+			width: 50px;
+			height: 50px;
+		}
+	}
+}

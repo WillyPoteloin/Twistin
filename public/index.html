@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Twistin</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" href="app.css">
+</head>
+<body>
+	<!-- div qui contient le corps de la page -->
+	<div class="content">
+		<div class="row">
+			<div class="columns">
+				<h1 class="site-title"><span>Twistin.fr</span> Le meilleur de la TV, Youtube et d'internet !</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns small-12 medium-8 small-centered channels">
+				<!-- on affiche les images des différent channels -->
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel"></span>
+				<span class="channel"></span>
+				<span class="channel"></span>
+				<span class="channel"></span>
+				<span class="channel"></span>
+				<span class="channel"></span>
+				<span class="channel"></span>
+				<span class="channel"></span>
+			</div>
+			<div class="small-12 medium-8 small-centered columns">
+				<p class="site-note text-center">Créer ton propre Cocktail</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-11 medium-8 small-centered columns mix_zone">
+				<span class="placeholder">Dépose tes chaines préférées ici !</span>
+			</div>
+		</div>
+	</div>
+	<script src="app.js"></script>	
+	<script>
+		$(document).ready(function() {
+
+			FastClick.attach(document.body);
+			$('.channel').pep({
+				removeMargins: false,
+				place: false,
+				revert: true,
+				droppable: '.mix_zone'
+			});
+		});
+	</script>
+</body>
+</html>

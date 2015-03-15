@@ -3,7 +3,8 @@ module.exports = config:
 		javascripts: joinTo:
 			'app.js': /(bower_components|app\/js\/)/
 		stylesheets: joinTo:
-			'app.css': /(bower_components|app\/styles\/)/
+			'libraries.css': /(bower_components)/
+			'app.css': /(app\/styles\/)/
 	optimize: true
 	plugins:
 		sass:

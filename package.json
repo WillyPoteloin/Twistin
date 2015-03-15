@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer-brunch": "^1.8.4",
     "browser-sync-brunch": "0.0.9",
     "brunch": "^1.7.20",
     "clean-css-brunch": "^1.7.2",

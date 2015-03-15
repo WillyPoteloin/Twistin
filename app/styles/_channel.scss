@@ -20,5 +20,14 @@
 			width: 50px;
 			height: 50px;
 		}
+
+		&.pep-active {
+			position: absolute;
+			z-index: 999;
+		}
+
+		&.shake {
+			@include shake(1.4s);
+		}
 	}
 }

@@ -1,0 +1,7 @@
+@mixin shake ($duration: 0.8s) {
+	animation-name: shake;
+	animation-duration: $duration;
+	transform-origin:50% 50%;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}

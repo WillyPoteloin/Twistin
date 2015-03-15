@@ -2,6 +2,8 @@
 	margin-top: 25px;
 	text-align: center;
 	.channel {
+		position: relative;
+		z-index: 996;
 		display: inline-block;
 		width: 95px;
 		height: 95px;	
@@ -21,13 +23,12 @@
 			height: 50px;
 		}
 
-		&.pep-active {
-			position: absolute;
-			z-index: 999;
+		&.selected, &.pep-active {
+			z-index: 997;
 		}
 
 		&.shake {
-			@include shake(1.4s);
+			@include shake(1s);
 		}
 	}
 }

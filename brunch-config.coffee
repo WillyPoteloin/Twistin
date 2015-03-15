@@ -5,3 +5,6 @@ module.exports = config:
 		stylesheets: joinTo:
 			'app.css': /(bower_components|app\/styles\/)/
 	optimize: true
+	plugins:
+		sass:
+			allowCache: true

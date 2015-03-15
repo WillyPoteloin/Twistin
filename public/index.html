@@ -42,11 +42,23 @@
 		$(document).ready(function() {
 
 			FastClick.attach(document.body);
-			$('.channel').pep({
+			var channels = $('.channel').pep({
 				removeMargins: false,
 				place: false,
+				droppable: '.mix_zone',
 				revert: true,
-				droppable: '.mix_zone'
+				revertIf: function(){
+					return !this.activeDropRegions.length;
+				},
+				start: function(event, obj) {
+					console.log(channels);
+					$.each(channels, function(index, el) {
+						if(!$(el).hasClass('pep-active')) $(el).addClass('shake');
+					});
+				},
+				stop: function(event, obj){
+					$('.channel').removeClass('shake');
+				}
 			});
 		});
 	</script>

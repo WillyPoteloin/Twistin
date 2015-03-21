@@ -31,5 +31,8 @@
 		&.shake {
 			@include shake(1s);
 		}
+		&.shake2 {
+			@include shake2(1s);
+		}
 	}
 }

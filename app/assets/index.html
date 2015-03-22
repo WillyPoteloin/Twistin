@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<title>Twistin</title>
@@ -53,14 +53,21 @@
 				},
 				start: function(event, obj) {
 					$.each(channels, function(index, el) {
-						if(!$(el).hasClass('pep-active')) $(el).addClass('shake');
+						if(!$(el).hasClass('pep-active')) {
+							if(index%2 == 0) {
+								$(el).addClass('shake');
+							}
+							else {
+								$(el).addClass('shake2');
+							}
+						}
 					});
 				},
 				stop: function(event, obj) {
 					// obj.$el.addClass('selected');
 				},
 				rest: function(event, obj) {
-					$('.channel').removeClass('shake');
+					$('.channel').removeClass('shake shake2');
 				}
 			});
 		});

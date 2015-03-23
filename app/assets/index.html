@@ -19,14 +19,14 @@
 			<div class="columns small-12 medium-8 small-centered channels">
 				<!-- on affiche les images des différent channels -->
 				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"></span>
-				<span class="channel"></span>
-				<span class="channel"></span>
-				<span class="channel"></span>
-				<span class="channel"></span>
-				<span class="channel"></span>
-				<span class="channel"></span>
-				<span class="channel"></span>
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel"><img src="images/musqua.jpg" alt="Maxime Musqua"></span>
 			</div>
 			<div class="small-12 medium-8 small-centered columns">
 				<p class="site-note text-center">Créer ton propre Cocktail</p>
@@ -53,13 +53,8 @@
 				},
 				start: function(event, obj) {
 					$.each(channels, function(index, el) {
-						if(!$(el).hasClass('pep-active')) {
-							if(index%2 == 0) {
-								$(el).addClass('shake');
-							}
-							else {
-								$(el).addClass('shake2');
-							}
+						if(!$(el).hasClass('pep-active')) {							
+							$(el).addClass('shake');
 						}
 					});
 				},
@@ -67,7 +62,7 @@
 					// obj.$el.addClass('selected');
 				},
 				rest: function(event, obj) {
-					$('.channel').removeClass('shake shake2');
+					$('.channel').removeClass('shake');
 				}
 			});
 		});

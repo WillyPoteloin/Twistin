@@ -1,12 +1,5 @@
-@mixin shake ($duration: 1.2s) {
+@mixin shake ($duration: 1s) {
 	animation-name: shake;
-	animation-duration: $duration;
-	transform-origin:50% 50%;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-@mixin shake2 ($duration: 1s) {
-	animation-name: shake2;
 	animation-duration: $duration;
 	transform-origin:50% 50%;
 	animation-iteration-count: infinite;

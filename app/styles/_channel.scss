@@ -5,6 +5,7 @@
 		position: relative;
 		z-index: 996;
 		left: 0px !important;
+		top: 0px !important;
 		display: inline-block;
 		width: 95px;
 		height: 95px;	
@@ -30,9 +31,6 @@
 
 		&.shake {
 			@include shake(1s);
-		}
-		&.shake2 {
-			@include shake2(1s);
 		}
 	}
 }

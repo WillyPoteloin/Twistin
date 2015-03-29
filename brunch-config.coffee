@@ -1,13 +1,21 @@
 module.exports = config:
+	paths:
+		watched: ['app']
+	modules:
+		wrapper: false
+	server: 
+		run: yes
+		base: '/public'
+	optimize: true
 	files:
 		javascripts: joinTo:
-			'app.js': /^(bower_components|app\/js\/)/
+			'libraries.js': /^(bower_components)/
+			'app.js': /^(app\/)/
 		stylesheets: joinTo:
 			'libraries.css': /^(bower_components)/
 			'app.css': /^(app\/styles\/)/
-	server: 
-		run: yes
-	optimize: true
 	plugins:
 		sass:
 			allowCache: true
+		uglify:
+			ignored: /^public\/app.js/

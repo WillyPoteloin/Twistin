@@ -1,1 +1,5 @@
 DirectoryIndex /public/index.html
+AuthName "As tu assez de Swag pour visiter ce site browwww ?"
+AuthType Basic
+AuthUserFile "/volume1/web/twistin/.htpasswd"
+Require valid-user

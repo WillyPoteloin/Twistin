@@ -16,17 +16,9 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="columns small-12 medium-8 small-centered channels">
+			<div class="columns small-12 medium-8 small-centered channels" ng-controller="channels">
 				<!-- on affiche les images des différent channels -->
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
-				<span class="channel"><img src="public/images/musqua.jpg" alt="Maxime Musqua"></span>
+				<span class="channel" ng-repeat="channel in channels"><img ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
 			</div>
 			<div class="small-12 medium-8 small-centered columns">
 				<p class="site-note text-center">Créer ton propre Cocktail</p>

@@ -8,12 +8,16 @@ module.exports = config:
 		base: '/public'
 	optimize: true
 	files:
-		javascripts: joinTo:
-			'libraries.js': /^(bower_components)/
-			'app.js': /^(app\/)/
-		stylesheets: joinTo:
-			'libraries.css': /^(bower_components)/
-			'app.css': /^(app\/styles\/)/
+		javascripts:
+			joinTo:
+				'libraries.js': /^(bower_components)/
+				'app.js': /^(app\/)/
+			order:
+				before: ['app/module.js']
+		stylesheets:
+			joinTo:
+				'libraries.css': /^(bower_components)/
+				'app.css': /^(app\/styles\/)/
 	plugins:
 		sass:
 			allowCache: true

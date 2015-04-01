@@ -1,4 +1,6 @@
-function channels($scope) {
+var app = angular.module('app');
+
+app.controller('channels', function ($scope) {
 	$scope.channels = [
 		{
 			name: 'Maxime Musqua',
@@ -24,4 +26,4 @@ function channels($scope) {
 	$scope.getLinks = function(channel) {
 	};
 
-}
+});

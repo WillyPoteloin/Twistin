@@ -90,7 +90,10 @@
   globals.require.list = list;
   globals.require.brunch = true;
 })();
-function channels($scope) {
+angular.module('app', []);
+var app = angular.module('app');
+
+app.controller('channels', function ($scope) {
 	$scope.channels = [
 		{
 			name: 'Maxime Musqua',
@@ -116,10 +119,6 @@ function channels($scope) {
 	$scope.getLinks = function(channel) {
 	};
 
-}
-;angular.module('twistin', []);
-angular.module('twistin').config(['$controllerProvider', function($controllerProvider) {
-  $controllerProvider.allowGlobals();
-}]);
+});
 
 //# sourceMappingURL=app.js.map

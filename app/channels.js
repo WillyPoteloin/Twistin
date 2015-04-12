@@ -7,7 +7,6 @@ app.controller('channels', function ($scope) {
 			image: 'public/images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
-			links: []
 		}
 	];
 

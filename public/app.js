@@ -90,7 +90,11 @@
   globals.require.list = list;
   globals.require.brunch = true;
 })();
-angular.module('app', []);
+angular.module('app', ['ngRoute']);
+
+var app = angular.module('app');
+
+app.value('keyword', '');
 var app = angular.module('app');
 
 app.controller('channels', function ($scope) {
@@ -100,7 +104,6 @@ app.controller('channels', function ($scope) {
 			image: 'public/images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
-			links: []
 		}
 	];
 
@@ -119,6 +122,19 @@ app.controller('channels', function ($scope) {
 	$scope.getLinks = function(channel) {
 	};
 
+});
+var app = angular.module('app');
+
+app.config(function($routeProvider) {
+	$routeProvider.when('/', {
+		templateUrl: '/public/views/home.html'
+	})
+	.when('/404', {
+		templateUrl: '/public/views/404.html'
+	})
+	.otherwise({
+		redirectTo: '/404'
+	});
 });
 
 //# sourceMappingURL=app.js.map

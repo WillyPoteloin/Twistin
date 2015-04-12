@@ -1,5 +1,6 @@
 .channels {
 	margin-top: 25px;
+	margin-bottom: 15px;
 	text-align: center;
 	.channel {
 		position: relative;
@@ -12,6 +13,7 @@
 		@include border-radius(95px);
 		background-color: $orange;
 		margin: 10px;
+		cursor: pointer;
 
 		img {
 			display: block;

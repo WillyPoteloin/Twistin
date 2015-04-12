@@ -1,0 +1,48 @@
+<div ng-controller="channels">
+	<div class="row">
+		<div class="columns">
+			<h1 class="site-title"><span>Twistin.fr</span> Le meilleur de la TV, Youtube et d'internet !</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="columns small-12 medium-8 small-centered channels">
+			<!-- on affiche les images des différent channels -->
+			<span class="channel" ng-repeat="channel in channels | filter: {name: keyword}"><img title="{{channel.name}}" ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
+		</div>
+		<div class="columns small-6 small-centered">
+			<input type="text" placeholder="Rechercher une chaine" ng-model="keyword"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-11 medium-8 small-centered columns mix_zone">
+			<span class="placeholder">Dépose tes chaines préférées ici !</span>
+		</div>
+	</div>
+</div>
+
+<script>
+	setTimeout(function() {
+		var channels = $('.channel').pep({
+			removeMargins: false,
+			place: false,
+			droppable: '.mix_zone',
+			revert: true,
+			revertIf: function(){
+				return !this.activeDropRegions.length;
+			},
+			start: function(event, obj) {
+				$.each(channels, function(index, el) {
+					if(!$(el).hasClass('pep-active')) {							
+						$(el).addClass('shake');
+					}
+				});
+			},
+			stop: function(event, obj) {
+				// obj.$el.addClass('selected');
+			},
+			rest: function(event, obj) {
+				$('.channel').removeClass('shake');
+			}
+		});
+	}, 10);
+</script>

@@ -9,56 +9,9 @@
 </head>
 <body ng-app="app">
 	<!-- div qui contient le corps de la page -->
-	<div class="content">
-		<div class="row">
-			<div class="columns">
-				<h1 class="site-title"><span>Twistin.fr</span> Le meilleur de la TV, Youtube et d'internet !</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="columns small-12 medium-8 small-centered channels" ng-controller="channels">
-				<!-- on affiche les images des différent channels -->
-				<span class="channel" ng-repeat="channel in channels"><img ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
-			</div>
-			<div class="small-12 medium-8 small-centered columns">
-				<p class="site-note text-center">Créer ton propre Cocktail</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="small-11 medium-8 small-centered columns mix_zone">
-				<span class="placeholder">Dépose tes chaines préférées ici !</span>
-			</div>
-		</div>
+	<div class="content" ng-view ng-cloak>
 	</div>
 	<script src="public/libraries.js"></script>
 	<script src="public/app.js"></script>
-	<script>
-		$(document).ready(function() {
-
-			FastClick.attach(document.body);
-			var channels = $('.channel').pep({
-				removeMargins: false,
-				place: false,
-				droppable: '.mix_zone',
-				revert: true,
-				revertIf: function(){
-					return !this.activeDropRegions.length;
-				},
-				start: function(event, obj) {
-					$.each(channels, function(index, el) {
-						if(!$(el).hasClass('pep-active')) {							
-							$(el).addClass('shake');
-						}
-					});
-				},
-				stop: function(event, obj) {
-					// obj.$el.addClass('selected');
-				},
-				rest: function(event, obj) {
-					$('.channel').removeClass('shake');
-				}
-			});
-		});
-	</script>
 </body>
 </html>

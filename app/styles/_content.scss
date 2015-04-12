@@ -9,7 +9,9 @@ body {
 		}
 
 		a {
-			color: $orange;
+			&:hover {
+				color: $orange;
+			}
 		}
 
 		input[type="text"] {

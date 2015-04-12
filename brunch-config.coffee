@@ -5,7 +5,7 @@ module.exports = config:
 		wrapper: false
 	server: 
 		run: yes
-		base: '/public'
+		base: '/twistin/public/'
 	optimize: true
 	files:
 		javascripts:

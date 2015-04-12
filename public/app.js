@@ -101,61 +101,61 @@ app.controller('channels', function ($scope) {
 	$scope.channels = [
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
 		{
 			name: 'Fail Army',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'La chaine Fail Army',
 		},
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
 		{
 			name: 'Maxime Musqua',
-			image: 'public/images/musqua.jpg',
+			image: 'images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
 		},
@@ -181,17 +181,18 @@ var app = angular.module('app');
 
 app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when('/', {
-		templateUrl: 'public/views/home.html'
+		templateUrl: 'views/home.html'
 	})
 	.when('/home', {
 		redirectTo: '/'	})
 	.when('/404', {
-		templateUrl: 'public/views/404.html'
+		templateUrl: 'views/404.html'
 	})
 	.otherwise({
 		redirectTo: '/404'
 	});
 
+	$locationProvider.html5Mode(true);
 });
 
 //# sourceMappingURL=app.js.map

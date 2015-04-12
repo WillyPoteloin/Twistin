@@ -2,12 +2,12 @@ var app = angular.module('app');
 
 app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when('/', {
-		templateUrl: 'views/home.html'
+		templateUrl: 'public/views/home.html'
 	})
 	.when('/home', {
 		redirectTo: '/'	})
 	.when('/404', {
-		templateUrl: 'views/404.html'
+		templateUrl: 'public/views/404.html'
 	})
 	.otherwise({
 		redirectTo: '/404'

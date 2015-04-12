@@ -7,7 +7,61 @@ app.controller('channels', function ($scope) {
 			image: 'public/images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
-		}
+		},
+		{
+			name: 'Fail Army',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'La chaine Fail Army',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
 	];
 
 	// Ajout d'un channel

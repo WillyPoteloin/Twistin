@@ -104,7 +104,61 @@ app.controller('channels', function ($scope) {
 			image: 'public/images/musqua.jpg',
 			url: '',
 			description: 'Les vidéos de Maxime Musqua.',
-		}
+		},
+		{
+			name: 'Fail Army',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'La chaine Fail Army',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
+		{
+			name: 'Maxime Musqua',
+			image: 'public/images/musqua.jpg',
+			url: '',
+			description: 'Les vidéos de Maxime Musqua.',
+		},
 	];
 
 	// Ajout d'un channel
@@ -125,16 +179,19 @@ app.controller('channels', function ($scope) {
 });
 var app = angular.module('app');
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'public/views/home.html'
 	})
+	.when('/home', {
+		redirectTo: '/'	})
 	.when('/404', {
 		templateUrl: 'public/views/404.html'
 	})
 	.otherwise({
 		redirectTo: '/404'
 	});
+
 });
 
 //# sourceMappingURL=app.js.map

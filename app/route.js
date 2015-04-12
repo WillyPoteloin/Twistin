@@ -13,5 +13,5 @@ app.config(function($routeProvider, $locationProvider) {
 		redirectTo: '/404'
 	});
 
-	$locationProvider.html5Mode(true);
+	// $locationProvider.html5Mode(true);
 });

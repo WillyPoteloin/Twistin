@@ -3,9 +3,6 @@ module.exports = config:
 		watched: ['app']
 	modules:
 		wrapper: false
-	server: 
-		run: yes
-		base: '/twistin/public/'
 	optimize: true
 	files:
 		javascripts:

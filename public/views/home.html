@@ -5,7 +5,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="columns small-12 medium-8 small-centered channels">
+		<div class="columns small-12 medium-8 small-centered channels" id="channels">
 			<!-- on affiche les images des différent channels -->
 			<span class="channel" ng-repeat="channel in channels | limitTo : 9 | filter : {name: keyword}"><img title="{{channel.name}}" ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
 		</div>
@@ -14,35 +14,30 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="small-11 medium-8 small-centered columns mix_zone">
-			<span class="placeholder">Dépose tes chaines préférées ici !</span>
+		<div class="small-11 medium-8 small-centered columns mix_zone" id="mix_zone">
 		</div>
 	</div>
 </div>
 
 <script>
-	setTimeout(function() {
-		var channels = $('.channel').pep({
-			removeMargins: false,
-			place: false,
-			droppable: '.mix_zone',
-			revert: true,
-			revertIf: function(){
-				return !this.activeDropRegions.length;
-			},
-			start: function(event, obj) {
-				$.each(channels, function(index, el) {
-					if(!$(el).hasClass('pep-active')) {							
-						$(el).addClass('shake');
-					}
-				});
-			},
-			stop: function(event, obj) {
-				// obj.$el.addClass('selected');
-			},
-			rest: function(event, obj) {
-				$('.channel').removeClass('shake');
-			}
+	$(function() {	
+		var drake = dragula([channels,mix_zone]);
+
+		drake.on('remove', function(){
+			console.log('remove');
 		});
-	}, 1);
+		drake.on('drop', function(){
+			console.log('drop');
+			$("#channels").css('max-height','999px');
+			$("#mix_zone").css('height','auto');
+		});
+		drake.on('drag', function(el, container){
+		});
+		drake.on('shadow', function(el, container){
+			setTimeout(function() {			
+				$("#channels").css('max-height',$('#channels').innerHeight());
+				$("#mix_zone").css('height',$('#mix_zone').innerHeight());
+			}, 100);
+		});
+	});
 </script>

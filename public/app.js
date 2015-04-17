@@ -107,7 +107,7 @@ app.controller('channels', function ($scope) {
 		},
 		{
 			name: 'Fail Army',
-			image: 'images/musqua.jpg',
+			image: 'images/failarmy.png',
 			url: '',
 			description: 'La chaine Fail Army',
 		},

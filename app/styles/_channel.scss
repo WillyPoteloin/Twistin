@@ -1,39 +1,39 @@
 .channels {
+	padding: 10px;
 	margin-top: 25px;
 	margin-bottom: 15px;
 	text-align: center;
-	min-height: 240px;
-	.channel {
-		position: relative;
-		z-index: 996;
-		left: 0px !important;
-		top: 0px !important;
-		display: inline-block;
-		width: 95px;
-		height: 95px;	
+	height: auto;
+	max-height: 999px;
+	@include single-transition(all, 1s, ease);
+}
+.channel {
+	display: inline-block;
+	width: 95px;
+	height: 95px;	
+	@include border-radius(95px);
+	background-color: $orange;
+	margin: 10px;
+	cursor: pointer;
+	box-shadow: 2px 2px 5px -1px rgba(#000, 0.5);
+
+	img {
+		display: block;
 		@include border-radius(95px);
-		background-color: $orange;
-		margin: 10px;
-		cursor: pointer;
+		height: 100%;
+		width: 100%;
+	}
+	
+	&.small {
+		width: 50px;
+		height: 50px;
+	}
 
-		img {
-			display: block;
-			@include border-radius(95px);
-			height: 100%;
-			width: 100%;
-		}
-		
-		&.small {
-			width: 50px;
-			height: 50px;
-		}
+	&.selected, &.pep-active {
+		z-index: 997;
+	}
 
-		&.selected, &.pep-active {
-			z-index: 997;
-		}
-
-		&.shake {
-			@include shake(1s);
-		}
+	&.shake {
+		@include shake(1s);
 	}
 }

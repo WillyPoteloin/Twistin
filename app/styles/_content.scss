@@ -1,6 +1,7 @@
 @include global-reset();
 
 body {
+	height: auto;
 	background: url("images/greyzz.png");
 	.content {
 
@@ -17,9 +18,9 @@ body {
 		input[type="text"] {
 			color: $orange;
 			border: none;
-			background-color: none;
-			height: 25px;
-			line-height: 25px;
+			height: 35px;
+			box-shadow: 2px 2px 5px -1px rgba(#000, 0.5);
+			font-size: 16px;
 		}
 
 		.text-center {
@@ -45,9 +46,13 @@ body {
 		}
 
 		.mix_zone {
+			padding: 10px;
+			text-align: center;
 			margin-top: 30px;
-			height: 150px;
+			height: auto;
+			min-height: 138px;
 			background-color: rgba($orange, 0.3);
+			@include single-transition("all", 1s, "ease");
 			
 			.placeholder {
 				display: block;

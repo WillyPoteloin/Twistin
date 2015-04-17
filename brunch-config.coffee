@@ -13,7 +13,7 @@ module.exports = config:
 				before: ['app/module.js']
 		stylesheets:
 			joinTo:
-				'libraries.css': /^(bower_components)/
+				'libraries.css': /^(bower_components|app\/css)/
 				'app.css': /^(app\/styles\/)/
 	plugins:
 		sass:

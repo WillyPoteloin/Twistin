@@ -7,7 +7,11 @@
 	<div class="row">
 		<div class="columns small-12 medium-8 small-centered channels" id="channels">
 			<!-- on affiche les images des différent channels -->
-			<span class="channel" ng-repeat="channel in channels | limitTo : 9 | filter : {name: keyword}"><img title="{{channel.name}}" ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
+			<span class="channel" ng-repeat="channel in filterChannels = (channels | limitTo : 9 | filter : {name: keyword})"><img title="{{channel.name}}" ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
+			<div class="no_result no_drag" ng-hide="filterChannels.length">
+				<span class="channel"></span>
+				<p>Il n'y a aucune chaine correspondante à votre recherche.</p>
+			</div>
 		</div>
 		<div class="columns small-6 small-centered">
 			<input type="text" placeholder="Rechercher une chaine" ng-model="keyword"/>
@@ -15,25 +19,59 @@
 	</div>
 	<div class="row">
 		<div class="small-11 medium-8 small-centered columns mix_zone" id="mix_zone">
+			<p class="no_drag placeholder">Déposé les chaines ici pour créer votre cocktail ;)</p>
 		</div>
 	</div>
 </div>
 
 <script>
 	$(function() {	
-		var drake = dragula([channels,mix_zone]);
-
-		drake.on('remove', function(){
-			console.log('remove');
+		var drake = dragula([channels,mix_zone],{
+			revertOnSpill: true,
+			direction: 'horizontal',
+			moves: function(el, container) {
+				return ($(el).hasClass('no_drag')) ? false : true;
+			},
 		});
-		drake.on('drop', function(){
-			console.log('drop');
+
+		drake.on('dragend', function(){	
+			console.log('end');		
+			// si on a rien dans la sélection alors on la cache
+			if($('#mix_zone').find('*:not(.placeholder)').length <= 0) {
+				$("#mix_zone").fadeOut();
+			}
+		});
+		drake.on('cancel', function(){	
+			// si on a rien dans la sélection alors on la cache
+			if($('#mix_zone').find('*:not(.placeholder)').length <= 0) {
+				$("#mix_zone").fadeOut();
+			}
+		});
+		drake.on('drag', function(el, container){
+			$('#mix_zone').fadeIn();
+			if($('#mix_zone').find('*:not(.placeholder)').length <= 0) {
+				$("#mix_zone p.no_drag").show();
+			}
+		});
+		drake.on('drop', function(el, container, source){
+			// si on a rien dans la sélection alors on la cache
+			if($('#mix_zone').find('*:not(.placeholder)').length <= 0) {
+				$("#mix_zone").fadeOut();
+			}
+
 			$("#channels").css('max-height','999px');
 			$("#mix_zone").css('height','auto');
 		});
-		drake.on('drag', function(el, container){
-		});
 		drake.on('shadow', function(el, container){
+			// si on drop dans la zone de sélection on supprime le message
+			if($(container).is($('#mix_zone'))) {
+				$("#mix_zone p.no_drag").hide();
+			}
+			else {
+				if($('#mix_zone').find('*:not(.placeholder)').length <= 0) {
+					$("#mix_zone p.no_drag").show();
+				}
+			}
 			setTimeout(function() {			
 				$("#channels").css('max-height',$('#channels').innerHeight());
 				$("#mix_zone").css('height',$('#mix_zone').innerHeight());

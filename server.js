@@ -1,6 +1,16 @@
 var express = require('express');
 var auth = require('http-auth');
 
+// connexion à la base de données
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/twistin', function(err) {
+    if(err) {
+        console.log('connection error', err);
+    } else {
+        console.log('connection successful');
+    }
+});
+
 var app = express();
 
 // on créer las paramètres pour l'authentification

@@ -208,7 +208,7 @@ var channelSchema = new mongoose.Schema({
 	nom: String,
 	description: String,
 	urlSource: String,
-	media: ObjectId,
+	media: mongoose.Schema.Types.ObjectId,
 	followerSource: Number,
 	followerTwistin: Number,
 	nbRefus: Number,
@@ -238,13 +238,13 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var channels = require(__dirname + '/app/models/channel.js');
+var channels = require('../models/channel');
 
 /* GET /channelss listing. */
 router.get('/', function(req, res, next) {
-  channels.find(function (err, todos) {
+  channels.find(function (err, channels) {
     if (err) return next(err);
-    res.json(todos);
+    res.json(channels);
   });
 });
 

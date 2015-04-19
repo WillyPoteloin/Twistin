@@ -4,7 +4,7 @@ var channelSchema = new mongoose.Schema({
 	nom: String,
 	description: String,
 	urlSource: String,
-	media: ObjectId,
+	media: mongoose.Schema.Types.ObjectId,
 	followerSource: Number,
 	followerTwistin: Number,
 	nbRefus: Number,

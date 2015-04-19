@@ -23,6 +23,6 @@ app.use(auth.connect(basic));
 app.use('/', express.static(__dirname + '/public/'));
 
 var channels = require(__dirname + '/app/routes/channels');
-app.use('/channels', todos);
+app.use('/channels', channels);
 
 app.listen(3333);

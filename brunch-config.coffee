@@ -8,9 +8,9 @@ module.exports = config:
 		javascripts:
 			joinTo:
 				'libraries.js': /^(bower_components)/
-				'app.js': /^(app\/)/
+				'app.js': /^(app\/modules|app\/js)/
 			order:
-				before: ['app/module.js']
+				before: ['app/modules/module.js']
 		stylesheets:
 			joinTo:
 				'libraries.css': /^(bower_components|app\/css)/

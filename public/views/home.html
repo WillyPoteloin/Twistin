@@ -32,10 +32,13 @@
 			moves: function(el, container) {
 				return ($(el).hasClass('no_drag')) ? false : true;
 			},
+			accepts: function(el, target, source, siblings){
+				if($(target).is($(source))) return false;
+				return true;
+			},
 		});
 
 		drake.on('dragend', function(){	
-			console.log('end');		
 			// si on a rien dans la sélection alors on la cache
 			if($('#mix_zone').find('*:not(.placeholder)').length <= 0) {
 				$("#mix_zone").fadeOut();
@@ -59,8 +62,9 @@
 				$("#mix_zone").fadeOut();
 			}
 
-			$("#channels").css('max-height','999px');
-			$("#mix_zone").css('height','auto');
+			// si on drop dans la sélection alors on doit ajouter la chaine à la liste des chaines sélectionnées
+			if($(container).is($('#mix_zone'))) {
+			}
 		});
 		drake.on('shadow', function(el, container){
 			// si on drop dans la zone de sélection on supprime le message
@@ -72,10 +76,6 @@
 					$("#mix_zone p.no_drag").show();
 				}
 			}
-			setTimeout(function() {			
-				$("#channels").css('max-height',$('#channels').innerHeight());
-				$("#mix_zone").css('height',$('#mix_zone').innerHeight());
-			}, 100);
 		});
 	});
 </script>

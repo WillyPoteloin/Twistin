@@ -180,6 +180,12 @@ app.controller('channels', function ($scope) {
 		},
 	];
 
+	$scope.selectedChannels = [];
+
+	$scope.addChannelToSelection = function(channel) {
+		$scope.selectedChannels.push(channel);
+	};
+
 	// Ajout d'un channel
 	$scope.add = function(channel) {
 		$scope.channels.push(channel);

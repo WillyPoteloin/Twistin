@@ -202,6 +202,21 @@ app.controller('channels', function ($scope) {
 	};
 
 });
+var mongoose = require('mongoose');
+
+var channelSchema = new mongoose.Schema({
+	nom: String,
+	description: String,
+	urlSource: String,
+	media: ObjectId,
+	followerSource: Number,
+	followerTwistin: Number,
+	nbRefus: Number,
+	dateMaj: { type: Date, default: Date.now },
+	dateAjout: { type: Date, default: Date.now },
+});
+
+module.exports = mongoose.model('Channel', channelSchema);
 var app = angular.module('app');
 
 app.config(function($routeProvider, $locationProvider) {
@@ -219,5 +234,20 @@ app.config(function($routeProvider, $locationProvider) {
 
 	// $locationProvider.html5Mode(true);
 });
+var express = require('express');
+var router = express.Router();
+
+var mongoose = require('mongoose');
+var channels = require(__dirname + '/app/models/channel.js');
+
+/* GET /channelss listing. */
+router.get('/', function(req, res, next) {
+  channels.find(function (err, todos) {
+    if (err) return next(err);
+    res.json(todos);
+  });
+});
+
+module.exports = router;
 
 //# sourceMappingURL=app.js.map

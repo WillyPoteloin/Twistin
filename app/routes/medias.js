@@ -2,13 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var channels = require('../models/channel');
+var medias = require('../models/media');
 
-// on récupère toutes les chainnes
+// récupération de tous les medias
 router.get('/', function(req, res, next) {
-  channels.find(function (err, channels) {
+  medias.find(function (err, medias) {
     if (err) return next(err);
-    res.json(channels);
+    res.json(medias);
   });
 });
 

@@ -2,13 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var channels = require('../models/channel');
+var videos = require('../models/video');
 
-// on récupère toutes les chainnes
+// récupération de toutes les vidéos
 router.get('/', function(req, res, next) {
-  channels.find(function (err, channels) {
+  videos.find(function (err, videos) {
     if (err) return next(err);
-    res.json(channels);
+    res.json(videos);
   });
 });
 

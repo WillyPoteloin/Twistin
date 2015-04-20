@@ -11,4 +11,4 @@ var userSchema = new mongoose.Schema({
 	nbConnexion: Number,
 });
 
-module.exports = mongoose.model('User', channelSchema);
+module.exports = mongoose.model('User', userSchema);

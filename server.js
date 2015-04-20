@@ -22,6 +22,10 @@ app.use(auth.connect(basic));
 
 var channels = require(__dirname + '/app/routes/channels');
 app.use('/channels', channels);
+var videos = require(__dirname + '/app/routes/videos');
+app.use('/videos', videos);
+var medias = require(__dirname + '/app/routes/medias');
+app.use('/medias', medias);
 
 app.use('/', express.static(__dirname + '/public/'));
 

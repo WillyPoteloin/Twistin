@@ -12,4 +12,4 @@ var videoSchema = new mongoose.Schema({
 	dateMaj: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Video', channelSchema);
+module.exports = mongoose.model('Video', videoSchema);

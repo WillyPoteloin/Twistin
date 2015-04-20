@@ -6,4 +6,4 @@ var mediaSchema = new mongoose.Schema({
 	nbChaine: Number,
 });
 
-module.exports = mongoose.model('Media', channelSchema);
+module.exports = mongoose.model('Media', mediaSchema);

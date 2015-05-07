@@ -28,5 +28,6 @@ var medias = require(__dirname + '/app/routes/medias');
 app.use('/medias', medias);
 
 app.use('/', express.static(__dirname + '/public/'));
+app.use('/manager', express.static(__dirname + '/public/manager'));
 
 app.listen(3333);

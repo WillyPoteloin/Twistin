@@ -7,10 +7,9 @@ module.exports = config:
 	files:
 		javascripts:
 			joinTo:
-				'libraries.js': /^(bower_components)/
-				'app.js': /^(app\/modules|app\/js)/
-			order:
-				before: ['app/modules/module.js']
+				'libraries.js': /^(bower_components|app\/js)/
+				'app.js': /^(app\/modules\/.*\.js)/
+				'manager.js': /^(app\/modules\/manager)/
 		stylesheets:
 			joinTo:
 				'libraries.css': /^(bower_components|app\/css)/

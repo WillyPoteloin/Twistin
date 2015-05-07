@@ -20,4 +20,9 @@ router.get('/:id', function(req, res, next) {
 	});
 });
 
+// on créer un media
+router.post('/add', function(req, res, next) {
+	console.log(req.body);
+});
+
 module.exports = router;

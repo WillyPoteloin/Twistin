@@ -1,3 +1,169 @@
-!function(){"use strict";var n="undefined"==typeof window?global:window;if("function"!=typeof n.require){var r={},e={},t={}.hasOwnProperty,i={},o=function(n,r){var e=0;r&&(r.indexOf(!1)&&(e="components/".length),r.indexOf("/",e)>0&&(r=r.substring(e,r.indexOf("/",e))));var t=i[n+"/index.js"]||i[r+"/deps/"+n+"/index.js"];return t?"components/"+t.substring(0,t.length-".js".length):n},u=function(){var n=/^\.\.?(\/|$)/;return function(r,e){var t,i,o=[];t=(n.test(e)?r+"/"+e:e).split("/");for(var u=0,a=t.length;a>u;u++)i=t[u],".."===i?o.pop():"."!==i&&""!==i&&o.push(i);return o.join("/")}}(),a=function(n){return n.split("/").slice(0,-1).join("/")},l=function(r){return function(e){var t=u(a(r),e);return n.require(t,r)}},f=function(n,r){var t={id:n,exports:{}};return e[n]=t,r(t.exports,l(n),t),t.exports},p=function(n,i){var a=u(n,".");if(null==i&&(i="/"),a=o(n,i),t.call(e,a))return e[a].exports;if(t.call(r,a))return f(a,r[a]);var l=u(a,"./index");if(t.call(e,l))return e[l].exports;if(t.call(r,l))return f(l,r[l]);throw new Error('Cannot find module "'+n+'" from "'+i+'"')};p.alias=function(n,r){i[r]=n},p.register=p.define=function(n,e){if("object"==typeof n)for(var i in n)t.call(n,i)&&(r[i]=n[i]);else r[n]=e},p.list=function(){var n=[];for(var e in r)t.call(r,e)&&n.push(e);return n},p.brunch=!0,n.require=p}}(),angular.module("app",["ngRoute"]);var app=angular.module("app");app.value("keyword","");var app=angular.module("app");app.config(function(n){n.when("/",{templateUrl:"views/manager/home.html"}).when("/home",{redirectTo:"/"}).when("/404",{templateUrl:"views/404.html"}).otherwise({redirectTo:"/404"})});
-//# sourceMappingURL=public/manager.js.map
+(function() {
+  'use strict';
+
+  var globals = typeof window === 'undefined' ? global : window;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+  var has = ({}).hasOwnProperty;
+
+  var aliases = {};
+
+  var endsWith = function(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+  };
+
+  var unalias = function(alias, loaderPath) {
+    var start = 0;
+    if (loaderPath) {
+      if (loaderPath.indexOf('components/' === 0)) {
+        start = 'components/'.length;
+      }
+      if (loaderPath.indexOf('/', start) > 0) {
+        loaderPath = loaderPath.substring(start, loaderPath.indexOf('/', start));
+      }
+    }
+    var result = aliases[alias + '/index.js'] || aliases[loaderPath + '/deps/' + alias + '/index.js'];
+    if (result) {
+      return 'components/' + result.substring(0, result.length - '.js'.length);
+    }
+    return alias;
+  };
+
+  var expand = (function() {
+    var reg = /^\.\.?(\/|$)/;
+    return function(root, name) {
+      var results = [], parts, part;
+      parts = (reg.test(name) ? root + '/' + name : name).split('/');
+      for (var i = 0, length = parts.length; i < length; i++) {
+        part = parts[i];
+        if (part === '..') {
+          results.pop();
+        } else if (part !== '.' && part !== '') {
+          results.push(part);
+        }
+      }
+      return results.join('/');
+    };
+  })();
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function(name) {
+      var absolute = expand(dirname(path), name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var module = {id: name, exports: {}};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var require = function(name, loaderPath) {
+    var path = expand(name, '.');
+    if (loaderPath == null) loaderPath = '/';
+    path = unalias(name, loaderPath);
+
+    if (has.call(cache, path)) return cache[path].exports;
+    if (has.call(modules, path)) return initModule(path, modules[path]);
+
+    var dirIndex = expand(path, './index');
+    if (has.call(cache, dirIndex)) return cache[dirIndex].exports;
+    if (has.call(modules, dirIndex)) return initModule(dirIndex, modules[dirIndex]);
+
+    throw new Error('Cannot find module "' + name + '" from '+ '"' + loaderPath + '"');
+  };
+
+  require.alias = function(from, to) {
+    aliases[to] = from;
+  };
+
+  require.register = require.define = function(bundle, fn) {
+    if (typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has.call(bundle, key)) {
+          modules[key] = bundle[key];
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+    }
+  };
+
+  require.list = function() {
+    var result = [];
+    for (var item in modules) {
+      if (has.call(modules, item)) {
+        result.push(item);
+      }
+    }
+    return result;
+  };
+
+  require.brunch = true;
+  globals.require = require;
+})();
+angular.module('app', ['ngRoute']);
+
+var app = angular.module('app');
+
+app.value('keyword', '');
+var app = angular.module('app');
+
+app.controller('medias', function ($scope, $http) {
+
+	// on doit récupérer tous les medias en base
+	$scope.medias = [];
+
+	// on appel l'API pour récupérer les medias
+	$http.get('/medias').
+	success(function(data, status, headers, config) {
+		// this callback will be called asynchronously
+		// when the response is available
+	}).
+	error(function(data, status, headers, config) {
+		// called asynchronously if an error occurs
+		// or server returns response with an error status.
+	});
+
+	$scope.add = function() {
+		$http.post('/medias/add').
+		success(function(data, status, headers, config) {
+			// this callback will be called asynchronously
+			// when the response is available
+		}).
+		error(function(data, status, headers, config) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+		});
+	};
+});
+var app = angular.module('app');
+
+app.config(function($routeProvider, $locationProvider) {
+	$routeProvider.when('/', {
+		templateUrl: 'manager/views/home.html'
+	})
+	.when('/home', {
+		redirectTo: '/'})
+	.when('/medias', {
+		templateUrl: 'manager/views/medias.html'})
+	.when('/medias/add', {
+		templateUrl: 'manager/views/add_medias.html'})
+	.when('/404', {
+		templateUrl: 'views/404.html'
+	})
+	.otherwise({
+		redirectTo: '/404'
+	});
+
+	// $locationProvider.html5Mode(true);
+});
+
 //# sourceMappingURL=manager.js.map

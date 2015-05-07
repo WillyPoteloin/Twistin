@@ -2,10 +2,14 @@ var app = angular.module('app');
 
 app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when('/', {
-		templateUrl: 'views/manager/home.html'
+		templateUrl: 'manager/views/home.html'
 	})
 	.when('/home', {
-		redirectTo: '/'	})
+		redirectTo: '/'})
+	.when('/medias', {
+		templateUrl: 'manager/views/medias.html'})
+	.when('/medias/add', {
+		templateUrl: 'manager/views/add_medias.html'})
 	.when('/404', {
 		templateUrl: 'views/404.html'
 	})

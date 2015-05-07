@@ -8,7 +8,7 @@ module.exports = config:
 		javascripts:
 			joinTo:
 				'libraries.js': /^(bower_components|app\/js)/
-				'app.js': /^(app\/modules\/.*\.js)/
+				'app.js': /^(app\/modules\/[^\/]*\.js)/
 				'manager.js': /^(app\/modules\/manager)/
 		stylesheets:
 			joinTo:
@@ -18,4 +18,4 @@ module.exports = config:
 		sass:
 			allowCache: true
 		uglify:
-			ignored: /^public\/app.js/
+			ignored: /^public\/(app|manager).js/

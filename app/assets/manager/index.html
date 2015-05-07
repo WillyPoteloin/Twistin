@@ -9,8 +9,24 @@
 	<link rel="stylesheet" href="app.css">
 </head>
 <body ng-app="app">
+	<nav class="top-bar foundation-bar" data-topbar>
+		<ul class="title-area">
+			<li class="name">
+				<span><h1><a href="/manager">Twistin Manager</a></h1></span>
+			</li>
+		</ul>
+		<section class="top-bar-section">
+			<ul class="left">
+				<li><a  href="/">Retour au site</a></li>
+			</ul>
+			<ul class="right">
+				<li><a  href="manager/#/channels">Chaines</a></li>
+				<li><a  href="manager/#/medias">Médias</a></li>
+			</ul>
+		</section>
+	</nav>
 	<!-- div qui contient le corps de la page -->
-	<div class="content" ng-view ng-cloak>
+	<div class="manager" ng-view ng-cloak>
 	</div>
 	<script src="libraries.js"></script>
 	<script src="manager.js"></script>

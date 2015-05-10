@@ -2,24 +2,24 @@
 	<div class="columns small-12" style="margin-top:50px;">
 		<h1 style="margin-bottom:15px;">Ajout d'un média : </h1>
 		<div class="columns small-6">
-			<form>
+			<form ng-submit="add();">
 				<div class="row collapse">
 					<div class="columns small-3">
 						<label class="prefix">Titre</label>
 					</div>
 					<div class="columns small-9">
-						<input type="text" name="form_title" placeholder="Nouveau média"/>
+						<input type="text" name="form_title" ng-model="mediaToAdd.nom" placeholder="Youtube"/>
 					</div>
 					<div class="columns small-3">
-						<label class="prefix">Url</label>
+						<label class="prefix">Site</label>
 					</div>
 					<div class="columns small-9">
-						<input type="text" name="form_url" placeholder="Url de base des vidéos du média"/>
+						<input type="text" name="form_url" ng-model="mediaToAdd.url" placeholder="https://youtube.com"/>
 					</div>
 				</div>
+				<input type="submit" class="button small success" value="Ajouter">
+				<a href="/manager/#/medias" class="button small">Annuler</a>
 			</form>
-			<a href="" class="button small" ng-click="add();">Ajouter</a>
-			<a href="/manager/#/medias" class="button small">Annuler</a>
 		</div>
 	</div>
 </div>

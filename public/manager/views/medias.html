@@ -1,6 +1,10 @@
 <div class="row" ng-controller="medias">
 	<div class="columns small-12" style="margin-top:50px;">
-		<a href="manager/#/medias/add" class="button tiny">Ajouter un media</a>
+		<a href="manager/#/medias/add" class="button small" style="float:right">Ajouter un media</a>
 		<h1>Liste des médias :</h1>
+		<ul ng-show="medias">
+			<li ng-repeat='media in medias'><a href="/manager/#/medias/{{media._id}}">{{media.nom}} ({{media.url}})</a></li>
+		</ul>
+		<p ng-hide="medias" class="no_items">Il n'y a aucun média en base.</p>
 	</div>
 </div>

@@ -10,8 +10,10 @@ app.config(function($routeProvider, $locationProvider) {
 		templateUrl: 'manager/views/medias.html'})
 	.when('/medias/add', {
 		templateUrl: 'manager/views/add_medias.html'})
+	.when('/medias/:id', {
+		templateUrl: 'manager/views/media.html'})
 	.when('/404', {
-		templateUrl: 'views/404.html'
+		templateUrl: 'manager/views/404.html'
 	})
 	.otherwise({
 		redirectTo: '/404'

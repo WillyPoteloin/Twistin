@@ -1,0 +1,13 @@
+.manager {
+	p {
+		margin: 10px 0px;
+
+		&.no_items {
+			color: red;
+		}
+	}
+
+	ul {
+		margin: 15px 0px;
+	}
+}

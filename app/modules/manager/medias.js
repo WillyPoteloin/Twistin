@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('medias', function ($scope, $http, $routeParams) {
+app.controller('medias', function ($scope, $http, $routeParams, $location) {
 
 	$scope.getAll = function() {	
 		// on appel l'API pour récupérer les medias
@@ -12,7 +12,7 @@ app.controller('medias', function ($scope, $http, $routeParams) {
 				// on doit trouver le media dans le tableau de media
 				$.each($scope.medias, function(index, val) {
 					if($routeParams.id === val._id) {
-						$scope.mediaCurrent = val;
+						$scope.media = val;
 					}
 				});
 			}
@@ -22,18 +22,19 @@ app.controller('medias', function ($scope, $http, $routeParams) {
 	};
 
 	$scope.add = function() {
-		$http.post('/medias/add', {media: $scope.mediaToAdd}).
+		$http.post('/medias/add', {media: $scope.media}).
 		success(function(data, status, headers, config) {
 			// on vide l'objet pour l'ajout d'un média
-			$scope.mediaToAdd.nom = '';
-			$scope.mediaToAdd.url = '';
-			$scope.mediaToAdd.nbChaine = 0;
+			$scope.media.nom = '';
+			$scope.media.url = '';
+			$scope.media.nbChaine = 0;
+			$location.path('/medias');
 		}).
 		error(function(data, status, headers, config) {
 			// on vide l'objet pour l'ajout d'un média
-			$scope.mediaToAdd.nom = '';
-			$scope.mediaToAdd.url = '';
-			$scope.mediaToAdd.nbChaine = 0;
+			$scope.media.nom = '';
+			$scope.media.url = '';
+			$scope.media.nbChaine = 0;
 		});
 
 	};
@@ -41,39 +42,52 @@ app.controller('medias', function ($scope, $http, $routeParams) {
 		
 	};
 	$scope.delete = function() {
-		if($scope.mediaCurrent._id != undefined) {
-			$http.delete('/medias/delete/'+$scope.mediaCurrent._id).
+		if($scope.media._id != undefined) {
+			$http.delete('/medias/delete/'+$scope.media._id).
 			success(function(data, status, headers, config) {
 				// on vide l'objet pour l'ajout d'un média
-				$scope.mediaCurrent._id = undefined;
-				$scope.mediaCurrent.nom = '';
-				$scope.mediaCurrent.url = '';
-				$scope.mediaCurrent.nbChaine = 0;
+				$scope.media._id = undefined;
+				$scope.media.nom = '';
+				$scope.media.url = '';
+				$scope.media.nbChaine = 0;
+				$location.path('/medias');
 			}).
 			error(function(data, status, headers, config) {
 				// on vide l'objet pour l'ajout d'un média
-				$scope.mediaCurrent._id = undefined;
-				$scope.mediaCurrent.nom = '';
-				$scope.mediaCurrent.url = '';
-				$scope.mediaCurrent.nbChaine = 0;
+				$scope.media._id = undefined;
+				$scope.media.nom = '';
+				$scope.media.url = '';
+				$scope.media.nbChaine = 0;
 			});
-
 		}
 	};
 
-	// objet pour l'édition d'un média
-	$scope.mediaCurrent = {
+	// model d'un média
+	$scope.media = {
 		nom: '',
 		url: '',
 		nbChaine: 0
 	};
 
-	// objet pour l'ajout d'un média
-	$scope.mediaToAdd = {
-		nom: '',
-		url: '',
-		nbChaine: 0
-	};
+	// liste des champs pour le formulaire d'un média
+	$scope.fields = [
+		{
+			type: 'input',
+			key: 'nom',
+			templateOptions: {
+				label: 'Nom du média',
+				placeholder: 'Youtube'
+			},
+		},
+		{
+			type: 'input',
+			key: 'url',
+			templateOptions: {
+				label: 'Site du média',
+				placeholder: 'https://youtube.com'
+			},
+		}
+	];
 
 	// on doit récupérer tous les medias en base
 	$scope.medias = $scope.getAll();

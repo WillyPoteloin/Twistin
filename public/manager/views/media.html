@@ -1,26 +1,14 @@
 <div class="row" ng-controller="medias">
 	<div class="columns small-12" style="margin-top:50px;">
-		<h1 style="margin-bottom:15px;">Edition d'un média : </h1>
+		<h1 ng-show="media._id" style="margin-bottom:15px;">Edition d'un média : </h1>
+		<h1 ng-hide="media._id" style="margin-bottom:15px;">Ajout d'un média : </h1>
 		<div class="columns small-6">
-			<form ng-submit="edit();">
-				<div class="row collapse">
-					<div class="columns small-3">
-						<label class="prefix">Titre</label>
-					</div>
-					<div class="columns small-9">
-						<input type="text" name="form_title" ng-model="mediaCurrent.nom" placeholder="Youtube"/>
-					</div>
-					<div class="columns small-3">
-						<label class="prefix">Site</label>
-					</div>
-					<div class="columns small-9">
-						<input type="text" name="form_url" ng-model="mediaCurrent.url" placeholder="https://youtube.com"/>
-					</div>
-				</div>
-				<input type="submit" class="button small success" value="Modifier">
-				<a href="" ng-click="delete();" class="button small alert">Supprimer</a>
+			<formly-form model="media" fields="fields">
+				<input ng-hide="media._id" type="submit" class="button small success" value="Ajouter" ng-click="add();">
+				<input ng-show="media._id" type="submit" class="button small success" value="Modifier" ng-click="edit();">
+				<a href="" ng-show="media._id" ng-click="delete();" class="button small alert">Supprimer</a>
 				<a href="/manager/#/medias" class="button small">Annuler</a>
-			</form>
+			</formly-form>
 		</div>
 	</div>
 </div>

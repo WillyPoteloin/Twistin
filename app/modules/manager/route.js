@@ -9,7 +9,7 @@ app.config(function($routeProvider, $locationProvider) {
 	.when('/medias', {
 		templateUrl: 'manager/views/medias.html'})
 	.when('/medias/add', {
-		templateUrl: 'manager/views/add_medias.html'})
+		templateUrl: 'manager/views/media.html'})
 	.when('/medias/:id', {
 		templateUrl: 'manager/views/media.html'})
 	.when('/404', {

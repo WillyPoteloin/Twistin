@@ -26,9 +26,6 @@ var videos = require(__dirname + '/app/routes/videos');
 app.use('/videos', videos);
 var medias = require(__dirname + '/app/routes/medias');
 app.use('/medias', medias);
-app.use('/medias/add', medias);
-app.use('/medias/delete/:id', medias);
-app.use('/medias/:id', medias);
 
 app.use('/', express.static(__dirname + '/public/'));
 app.use('/manager', express.static(__dirname + '/public/manager'));

@@ -31,7 +31,10 @@ router.get('/:id', function(req, res, next) {
 
 // on créer un media
 router.post('/add', jsonParser, function(req, res, next) {
-	medias.create(req.body.media);
+	medias.create(req.body.media, function (err, post) {		
+		if (err) return next(err);
+		res.json(post);
+	});
 });
 
 // on supprime un media

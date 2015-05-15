@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute']);
+angular.module('app', ['ngRoute', 'formly', 'formlyBootstrap']);
 
 var app = angular.module('app');
 

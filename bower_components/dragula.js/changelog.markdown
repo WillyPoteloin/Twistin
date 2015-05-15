@@ -1,3 +1,32 @@
+# 1.6.0 Lonely Clown Clone
+
+- Added `'cloned'` event when a DOM element is cloned
+
+# 1.5.1 Touchypants
+
+- Fixed an issue where dragula didn't understand where an element was being dropped
+
+# 1.5.0 Drag Racing
+
+- Introduced drag handles so that elements could only be dragged from a handle element
+
+# 1.4.2 Container Camp
+
+- Fixed a bug where `addContainer` and `removeContainer` wouldn't update the list of available containers
+- Fixed a bug where `document.body` would be accessed before it was available if the scripts were loaded in the `<head>`
+
+# 1.4.1 Blood Prince
+
+- Fixed an issue where manually started drag events wouldn't know if position changed when an item was dropped in the source container
+- Added minor styling to `gu-mirror`, to visually identify that a drag is in progress
+
+# 1.4.0 Top Fuel
+
+- Added a `dragend` event that's always fired
+- Added a `dragging` property to API
+- Introduced manual `start` API method
+- Introduced `addContainer` and `removeContainer` dynamic API
+
 # 1.3.0 Terror
 
 Introduced an `.end` instance API method that gracefully ends the drag event using the last known valid drop target.

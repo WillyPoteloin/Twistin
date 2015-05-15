@@ -2,7 +2,7 @@
 
 > Drag and drop so simple it hurts
 
-Browser support includes every sane browser and **IE7+**.
+Browser support includes every sane browser and **IE7+**. <sub>_(Granted you polyfill the functional `Array` methods in ES5)_</sub>
 
 # Demo
 
@@ -47,29 +47,48 @@ Note that dragging is only triggered on left clicks, and only if no meta keys ar
 The example below allows the user to drag elements from `left` into `right`, and from `right` into `left`.
 
 ```js
-dragula([left, right]);
+dragula([document.querySelector('#left'), document.querySelector('#right')]);
 ```
 
-You can also provide an `options` object. The options are detailed below.
+You can also provide an `options` object. Here's an overview.
+
+```js
+dragula(containers, {
+  moves: function (el, container, handle) {
+    return true;         // elements are always draggable by default
+  },
+  accepts: function (el, target, source, sibling) {
+    return true;         // elements can be dropped in any of the `containers` by default
+  },
+  direction: 'vertical', // Y axis is considered when determining where an element would be dropped
+  copy: false,           // elements are moved by default, not copied
+  revertOnSpill: false,  // spilling will put the element back where it was dragged from, if this is true
+  removeOnSpill: false   // spilling will `.remove` the element, if this is true
+});
+```
+
+The options are detailed below.
 
 #### `options.moves`
 
-You can define a `moves` method which will be invoked with `(el, container)` whenever an element is clicked. If this method returns `false`, a drag event won't begin, and the event won't be prevented either.
+You can define a `moves` method which will be invoked with `(el, container, handle)` whenever an element is clicked. If this method returns `false`, a drag event won't begin, and the event won't be prevented either. The `handle` element will be the original click target, which comes in handy to test if that element is an expected _"drag handle"_.
 
 #### `options.accepts`
 
 You can set `accepts` to a method with the following signature: `(el, target, source, sibling)`. It'll be called to make sure that an element `el`, that came from container `source`, can be dropped on container `target` before a `sibling` element. The `sibling` can be `null`, which would mean that the element would be placed as the last element in the container. Note that if `options.copy` is set to `true`, `el` will be set to the copy, instead of the originally dragged element.
 
+Also note that **the position where a drag starts is always going to be a valid place where to drop the element**, even if `accepts` returned `false` for all cases.
+
 #### `options.copy`
 
 If `copy` is set to `true`, items will be copied rather than moved. This implies the following differences:
 
-Event    | Move                                     | Copy
----------|------------------------------------------|---------------------------------------------
-`drag`   | Element will be concealed from `source`  | Nothing happens
-`drop`   | Element will be moved into `target`      | Element will be cloned into `target`
-`remove` | Element will be removed from DOM         | Nothing happens
-`cancel` | Element will stay in `source`            | Nothing happens
+Event     | Move                                     | Copy
+----------|------------------------------------------|---------------------------------------------
+`drag`    | Element will be concealed from `source`  | Nothing happens
+`drop`    | Element will be moved into `target`      | Element will be cloned into `target`
+`remove`  | Element will be removed from DOM         | Nothing happens
+`cancel`  | Element will stay in `source`            | Nothing happens
 
 #### `options.revertOnSpill`
 
@@ -86,6 +105,22 @@ When an element is dropped onto a container, it'll be placed near the point wher
 ## API
 
 The `dragula` method returns a tiny object with a concise API. We'll refer to the API returned by `dragula` as `drake`.
+
+#### `drake.addContainer(container)`
+
+Adds a `container` to the `containers` collection. It can be a single DOM element or an array.
+
+#### `drake.removeContainer(container)`
+
+Removes a `container` from the `containers` collection. It can be a single DOM element or an array.
+
+#### `drake.dragging`
+
+This property will be `true` whenever an element is being dragged.
+
+#### `drake.start(item)`
+
+Enter drag mode **without a shadow**. This method is most useful when providing complementary keyboard shortcuts to an existing drag and drop solution. Even though a shadow won't be created at first, the user will get one as soon as they click on `item` and start dragging it around. Note that if they click and drag something else, `.end` will be called before picking up the new item.
 
 #### `drake.end()`
 
@@ -111,10 +146,12 @@ The `drake` is an event emitter. The following events can be tracked using `drak
 Event Name | Listener Arguments      | Event Description
 -----------|-------------------------|-------------------------------------------------------------------------------------
 `drag`     | `el, container`         | `el` was lifted from `container`
+`dragend`  | `el`                    | Dragging event for `el` ended with either `cancel`, `remove`, or `drop`
 `drop`     | `el, container, source` | `el` was dropped into `container`, and originally came from `source`
-`cancel`   | `el, container`         | `el` was being dragged but it got nowhere and went back into `container`, it's last stable parent
-`remove`   | `el, container`         | `el` was being dragged but it got nowhere and it was removed from the DOM. It's last stable parent was `container`.
-`shadow`   | `el, container`    | `el`, _the visual aid shadow_, was moved into `container`. May trigger many times as the position of `el` changes, even within the same `container`
+`cancel`   | `el, container`         | `el` was being dragged but it got nowhere and went back into `container`, its last stable parent
+`remove`   | `el, container`         | `el` was being dragged but it got nowhere and it was removed from the DOM. Its last stable parent was `container`.
+`shadow`   | `el, container`         | `el`, _the visual aid shadow_, was moved into `container`. May trigger many times as the position of `el` changes, even within the same `container`
+`cloned`   | `clone, original`       | DOM element `original` was cloned as `clone`. Triggers for mirror images and when `copy: true`
 
 #### `drake.destroy()`
 
@@ -124,8 +161,9 @@ Removes all drag and drop events used by `dragula` to manage drag and drop betwe
 
 MIT
 
-![eyes.png][3]
+[![eyes.png][3]][4]
 
 [1]: https://github.com/bevacqua/dragula/blob/master/resources/demo.png
 [2]: http://bevacqua.github.io/dragula/
 [3]: https://github.com/bevacqua/dragula/blob/master/resources/eyes.png
+[4]: https://www.youtube.com/watch?v=EqQuihD0hoI

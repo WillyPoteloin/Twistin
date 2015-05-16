@@ -78,6 +78,13 @@ app.controller('medias', function ($scope, $http, $routeParams, $location) {
 				label: 'Nom du média',
 				placeholder: 'Youtube'
 			},
+			validators: {
+				isUnique: function($viewValue, $modelValue, scope) {
+					var value = $modelValue || $viewValue;
+					// Vérifier que le média n'est pas déjà présent en base
+					return true;
+				}
+			}
 		},
 		{
 			type: 'input',
@@ -86,6 +93,19 @@ app.controller('medias', function ($scope, $http, $routeParams, $location) {
 				label: 'Site du média',
 				placeholder: 'https://youtube.com'
 			},
+			validators: {
+				isUrl: function($viewValue, $modelValue, scope) {
+					var value = $modelValue || $viewValue;
+					// Vérifier que l'url est bien une url
+					var regexUrl = /^https?\:\/\/.*\..{2,4}$/;
+					if(value.match(regexUrl) !== null) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+			}
 		}
 	];
 

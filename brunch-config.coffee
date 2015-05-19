@@ -1,6 +1,6 @@
 module.exports = config:
 	paths:
-		watched: ['app']
+		watched: ['brunch-config.coffee', 'app/modules', 'app/js', 'app/css', 'app/styles']
 	modules:
 		wrapper: false
 	optimize: true

@@ -3,9 +3,9 @@
 		<h1 ng-show="media._id" style="margin-bottom:15px;">Edition d'un média : </h1>
 		<h1 ng-hide="media._id" style="margin-bottom:15px;">Ajout d'un média : </h1>
 		<div class="columns small-6">
-			<formly-form model="media" fields="fields">
-				<input ng-hide="media._id" type="submit" class="button small success" value="Ajouter" ng-click="add();">
-				<input ng-show="media._id" type="submit" class="button small success" value="Modifier" ng-click="edit();">
+			<formly-form model="media" fields="fields" form="form">
+				<input ng-disabled="form.$invalid" ng-hide="media._id" type="submit" class="button small success" value="Ajouter" ng-click="add();">
+				<input ng-disabled="form.$invalid" ng-show="media._id" type="submit" class="button small success" value="Modifier" ng-click="update();">
 				<a href="" ng-show="media._id" ng-click="delete();" class="button small alert">Supprimer</a>
 				<a href="/manager/#/medias" class="button small">Annuler</a>
 			</formly-form>

@@ -37,6 +37,14 @@ router.post('/add', jsonParser, function(req, res, next) {
 	});
 });
 
+// on met à jour un media
+router.post('/update/:id', jsonParser, function(req, res, next) {
+	medias.findByIdAndUpdate(req.params.id, { $set: {nom: req.body.media.nom, url: req.body.media.url}}, function (err, post) {
+		if (err) return next(err);
+		res.json(post);
+	});
+});
+
 // on supprime un media
 router.delete('/delete/:id', function(req, res, next) {
 	medias.findByIdAndRemove(req.params.id, {}, function (err, post) {

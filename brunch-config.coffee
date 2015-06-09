@@ -19,3 +19,7 @@ module.exports = config:
 			allowCache: true
 		uglify:
 			ignored: /^public\/(app|manager).js/
+		postcss:
+			processors: [
+				require('autoprefixer')
+			]

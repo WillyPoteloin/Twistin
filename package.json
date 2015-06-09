@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "autoprefixer-brunch": "^1.8.4",
+    "autoprefixer": "^5.2.0",
     "body-parser": "^1.12.3",
     "browser-sync-brunch": "0.0.9",
     "brunch": "^1.7.20",
@@ -21,6 +21,7 @@
     "javascript-brunch": "^1.7.1",
     "mongoose": "^4.0.1",
     "multer": "^0.1.8",
+    "postcss-brunch": "^0.4.1",
     "sass-brunch": "^1.8.10",
     "uglify-js-brunch": "^1.7.7"
   }

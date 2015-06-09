@@ -118,20 +118,29 @@ var app = angular.module('app');
 
 app.controller('medias', function ($scope, $http, $routeParams, $location) {
 
+	// model d'un média
+	$scope.media = {
+		nom: '',
+		url: '',
+		nbChaine: 0
+	};
+
+	// on regarde si on est sur un media en particulier avec la route
+	if($routeParams.id != undefined) {
+		// on doit trouver le media en base
+		$http.get('/medias/'+$routeParams.id).
+		success(function(data, status, headers, config) {
+			$scope.media = data;
+		}).
+		error(function(data, status, headers, config){
+		});
+	}
+
 	$scope.getAll = function(callback) {	
 		// on appel l'API pour récupérer les medias
 		$http.get('/medias').
 		success(function(data, status, headers, config) {
 			$scope.medias = data;
-			// on regarde si on est sur un média
-			if($routeParams.id != undefined) {
-				// on doit trouver le media dans le tableau de media
-				$.each($scope.medias, function(index, val) {
-					if($routeParams.id === val._id) {
-						$scope.media = val;
-					}
-				});
-			}
 
 			callback();
 		}).
@@ -184,13 +193,6 @@ app.controller('medias', function ($scope, $http, $routeParams, $location) {
 				$scope.media.nbChaine = 0;
 			});
 		}
-	};
-
-	// model d'un média
-	$scope.media = {
-		nom: '',
-		url: '',
-		nbChaine: 0
 	};
 
 	// on doit récupérer tous les medias en base

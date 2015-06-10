@@ -15,8 +15,6 @@ module.exports = config:
 				'libraries.css': /^(bower_components|app\/css)/
 				'app.css': /^(app\/styles\/)/
 	plugins:
-		browserSync:
-			port: 1281
 		sass:
 			allowCache: true
 		uglify:

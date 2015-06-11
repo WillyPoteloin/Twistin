@@ -16,6 +16,7 @@ module.exports = config:
 				'app.css': /^(app\/styles\/)/
 	plugins:
 		browserSync:
+			scriptPath: "http://twistin.fr:1281"
 			port: 81
 		sass:
 			allowCache: true

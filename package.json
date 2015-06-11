@@ -12,6 +12,7 @@
   "dependencies": {
     "autoprefixer": "^5.2.0",
     "body-parser": "^1.12.3",
+    "browser-sync-brunch": "0.0.9",
     "brunch": "^1.7.20",
     "clean-css-brunch": "^1.7.2",
     "css-brunch": "^1.7.0",

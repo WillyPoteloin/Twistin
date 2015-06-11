@@ -85,6 +85,6 @@ module.exports = {
         "js": "script"
     },
     "scriptPath": function(path) {
-    	return "localhost:1281"+path;
+    	return "http://HOST:1281"+path;
     }
 };

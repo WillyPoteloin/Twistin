@@ -15,7 +15,7 @@ module.exports = config:
 				'libraries.css': /^(bower_components|app\/css)/
 				'app.css': /^(app\/styles\/)/
 	plugins:
-		off: ['browser-sync-brunch']
+		# off: ['browser-sync-brunch']
 		# browserSync:
 		# 	port: 81
 		# 	scriptPath: (path) -> "http://twistin.fr:1281"+path;

@@ -1,16 +1,23 @@
 <div ng-controller="channels">
-	<div class="row">
-		<div class="columns small-3">
-			<h1 class="site-title"><span>Twistin.fr</span></h1>
-		</div>
-		<div class="columns small-6 small-centered">
-			<input type="text" placeholder="Rechercher une chaine" ng-model="keyword"/>
+	<div class="header">
+		<div class="row">
+			<div class="columns small-3">
+				<p class="site-title"><a href="twistin.fr">Twistin.fr</a></p>
+			</div>
+			<div class="columns small-6">
+				<input type="text" placeholder="Rechercher une chaine" ng-model="keyword"/>
+			</div>
+			<div class="columns small-3 site-social">
+				<a href=""><span class="fa fa-twitter"></span></a>
+				<a href=""><span class="fa fa-facebook"></span></a>
+				<a href=""><span class="fa fa-linkedin"></span></a>
+			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row first_after_header">
 		<div class="columns small-12 medium-8 small-centered channels" id="channels">
 			<!-- on affiche les images des différent channels -->
-			<span class="channel" ng-repeat="channel in filterChannels = (channels | limitTo : 9 | filter : {name: keyword})"><img title="{{channel.name}}" ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
+			<span class="channel" ng-repeat="channel in filterChannels = (channels | limitTo : 13 | filter : {name: keyword})"><img title="{{channel.name}}" ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
 			<div class="no_result no_drag" ng-hide="filterChannels.length">
 				<span class="channel"></span>
 				<p>Il n'y a aucune chaine correspondante à votre recherche.</p>

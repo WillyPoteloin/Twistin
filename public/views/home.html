@@ -1,7 +1,10 @@
 <div ng-controller="channels">
 	<div class="row">
-		<div class="columns">
-			<h1 class="site-title"><span>Twistin.fr</span> Le meilleur de la TV, Youtube et d'internet !</h1>
+		<div class="columns small-3">
+			<h1 class="site-title"><span>Twistin.fr</span></h1>
+		</div>
+		<div class="columns small-6 small-centered">
+			<input type="text" placeholder="Rechercher une chaine" ng-model="keyword"/>
 		</div>
 	</div>
 	<div class="row">
@@ -12,9 +15,6 @@
 				<span class="channel"></span>
 				<p>Il n'y a aucune chaine correspondante à votre recherche.</p>
 			</div>
-		</div>
-		<div class="columns small-6 small-centered">
-			<input type="text" placeholder="Rechercher une chaine" ng-model="keyword"/>
 		</div>
 	</div>
 	<div class="row">

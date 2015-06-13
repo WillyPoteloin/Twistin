@@ -15,9 +15,10 @@ module.exports = config:
 				'libraries.css': /^(bower_components|app\/css)/
 				'app.css': /^(app\/styles\/)/
 	plugins:
-		browserSync:
-			scriptPath: "http://twistin.fr:1281"
-			port: 81
+		off: ['browser-sync-brunch']
+		# browserSync:
+		# 	port: 81
+		# 	scriptPath: (path) -> "http://twistin.fr:1281"+path;
 		sass:
 			allowCache: true
 		uglify:

@@ -109,20 +109,51 @@
   require.brunch = true;
   globals.require = require;
 })();
-angular.module('app', ['ngRoute', 'formly', 'formlyBootstrap']);
+angular.module('app', ['ngRoute', 'formly', 'formlyBootstrap', 'angularFileUpload']);
 
 var app = angular.module('app');
 
 app.value('keyword', '');
 var app = angular.module('app');
 
-app.controller('medias', function ($scope, $http, $routeParams, $location) {
+app.controller('medias', function ($scope, $http, $routeParams, $location, FileUploader) {
 
 	// model d'un média
 	$scope.media = {
 		nom: '',
 		url: '',
+		img: '',
 		nbChaine: 0
+	};
+
+	// on déclare une variable sur le scope pour récupérer l'upload d'une image pour le média
+	$scope.uploader = new FileUploader({
+		url: '/upload'
+	});
+
+	$scope.uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+	};
+	$scope.uploader.onAfterAddingFile = function(fileItem) {
+		$scope.uploader.uploadItem(fileItem);
+	};
+	$scope.uploader.onBeforeUploadItem = function(item) {
+	};
+	$scope.uploader.onProgressItem = function(fileItem, progress) {
+	};
+	$scope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
+	};
+	$scope.uploader.onErrorItem = function(fileItem, response, status, headers) {
+	};
+	$scope.uploader.onCancelItem = function(fileItem, response, status, headers) {
+	};
+	$scope.uploader.onCompleteItem = function(fileItem, response, status, headers) {
+		if(response == 'nok') {
+
+		}
+		else if(response.path !== undefined) {
+			var file = response;
+			$scope.media.img = file.path.replace('public/', '');
+		}
 	};
 
 	// on regarde si on est sur un media en particulier avec la route

@@ -10,5 +10,15 @@
 				<a href="/manager/#/medias" class="button small">Annuler</a>
 			</formly-form>
 		</div>
+		<div class="columns small-6">
+			<form action='/manager/#/medias/' enctype="multipart/form-data">
+				<label>Image du média :</label>
+				<br/>
+				<div ng-hide="!media.img" class="image">
+					<img ng-src="{{media.img}}" alt="Image du média">
+				</div>
+				<input type="file" nv-file-select uploader="uploader" name="form_image" id="form_image">
+			</form>
+		</div>
 	</div>
 </div>

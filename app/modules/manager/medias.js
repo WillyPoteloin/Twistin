@@ -15,7 +15,7 @@ app.controller('medias', function ($scope, $http, $routeParams, $location, FileU
 		url: '/upload'
 	});
 
-	$scope.uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+	$scope.uploader.onWhenAddingFileFailed = function(item, filter, options) {
 	};
 	$scope.uploader.onAfterAddingFile = function(fileItem) {
 		$scope.uploader.uploadItem(fileItem);
@@ -56,7 +56,6 @@ app.controller('medias', function ($scope, $http, $routeParams, $location, FileU
 		$http.get('/medias').
 		success(function(data, status, headers, config) {
 			$scope.medias = data;
-
 			callback();
 		}).
 		error(function(data, status, headers, config) {
@@ -70,6 +69,7 @@ app.controller('medias', function ($scope, $http, $routeParams, $location, FileU
 			// on vide l'objet pour l'ajout d'un média
 			$scope.media.nom = '';
 			$scope.media.url = '';
+			$scope.media.img = '';
 			$scope.media.nbChaine = 0;
 			$location.path('/medias');
 		}).
@@ -77,6 +77,7 @@ app.controller('medias', function ($scope, $http, $routeParams, $location, FileU
 			// on vide l'objet pour l'ajout d'un média
 			$scope.media.nom = '';
 			$scope.media.url = '';
+			$scope.media.img = '';
 			$scope.media.nbChaine = 0;
 		});
 	};
@@ -97,6 +98,7 @@ app.controller('medias', function ($scope, $http, $routeParams, $location, FileU
 				$scope.media._id = undefined;
 				$scope.media.nom = '';
 				$scope.media.url = '';
+				$scope.media.img = '';
 				$scope.media.nbChaine = 0;
 				$location.path('/medias');
 			}).
@@ -105,9 +107,13 @@ app.controller('medias', function ($scope, $http, $routeParams, $location, FileU
 				$scope.media._id = undefined;
 				$scope.media.nom = '';
 				$scope.media.url = '';
+				$scope.media.img = '';
 				$scope.media.nbChaine = 0;
 			});
 		}
+	};
+	$scope.imgDelete = function(){
+		$scope.media.img = '';
 	};
 
 	// on doit récupérer tous les medias en base

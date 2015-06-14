@@ -12,6 +12,12 @@ app.config(function($routeProvider, $locationProvider) {
 		templateUrl: 'manager/views/media.html'})
 	.when('/medias/:id', {
 		templateUrl: 'manager/views/media.html'})
+	.when('/channels', {
+		templateUrl: 'manager/views/channels.html'})
+	.when('/channels/add', {
+		templateUrl: 'manager/views/channel.html'})
+	.when('/channels/:id', {
+		templateUrl: 'manager/views/channel.html'})
 	.when('/404', {
 		templateUrl: 'manager/views/404.html'
 	})

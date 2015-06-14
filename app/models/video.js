@@ -4,6 +4,7 @@ var videoSchema = new mongoose.Schema({
 	channelId: mongoose.Schema.Types.ObjectId,
 	nom: String,
 	description: String,
+	img: String,
 	vueSource: Number,
 	vueTwistin: Number,
 	codeLecteur: String,

@@ -1,0 +1,25 @@
+<div class="row" ng-controller="channels">
+	<div class="columns small-12" style="margin-top:50px;">
+		<h1 ng-show="channel._id" style="margin-bottom:15px;">Edition d'une chaine : </h1>
+		<h1 ng-hide="channel._id" style="margin-bottom:15px;">Ajout d'une chaine : </h1>
+		<div class="columns small-6">
+			<formly-form model="channel" fields="fields" form="form">
+				<input ng-disabled="form.$invalid" ng-hide="channel._id" type="submit" class="button small success" value="Ajouter" ng-click="add();">
+				<input ng-disabled="form.$invalid" ng-show="channel._id" type="submit" class="button small success" value="Modifier" ng-click="update();">
+				<a href="" ng-show="channel._id" ng-click="delete();" class="button small alert">Supprimer</a>
+				<a href="/manager/#/channels" class="button small">Annuler</a>
+			</formly-form>
+		</div>
+		<div class="columns small-6">
+			<form action='/manager/#/channels/' enctype="multipart/form-data">
+				<label>Image du média :</label>
+				<br/>
+				<div ng-hide="!channel.img" class="image">
+					<img ng-src="{{channel.img}}" alt="Image du média">
+					<a class="delete" href="" title="supprimer l'image" ng-click="imgDelete();"><span class="fa fa-trash-o"></span></a>
+				</div>
+				<input type="file" nv-file-select uploader="uploader" name="form_image" id="form_image">
+			</form>
+		</div>
+	</div>
+</div>

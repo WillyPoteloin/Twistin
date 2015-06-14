@@ -5,7 +5,7 @@ var app = express();
 
 var router = express.Router();
 
-var multerParser = multer({ dest: './public/manager/uploads/'});
+var multerParser = multer({ dest: './public/uploads/'});
 
 router.post('/', multerParser, function(req, res, next) {
 	if(req.files.file !== undefined) {

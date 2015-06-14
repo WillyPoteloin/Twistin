@@ -5,6 +5,7 @@ var channelSchema = new mongoose.Schema({
 	description: String,
 	url: String,
 	media: mongoose.Schema.Types.ObjectId,
+	img: String,
 	followerSource: Number,
 	followerTwistin: Number,
 	nbRefus: Number,

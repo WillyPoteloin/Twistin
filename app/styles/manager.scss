@@ -6,6 +6,30 @@
 @import "mixins";
 
 .manager {
+
+	a:not(.button) {
+		position: relative;
+		color: #FFF;
+		text-decoration: none;
+
+		&::after {
+			text-align: center;
+			@include single-transition(all, 0.5s);
+			position: absolute;
+			left: 0px;
+			bottom: 0px;
+			content: "";
+			border-bottom: 1px solid #FFF;
+			width: 100%;
+			transform: scaleX(0);
+		}
+
+		&:hover {
+			&::after {
+				transform: scaleX(1);
+			}
+		}
+	}
 	p {
 		margin: 10px 0px;
 
@@ -18,22 +42,46 @@
 		margin: 15px 0px;
 
 		li {
+			width: 100px;
+			margin: 10px;
 			margin-bottom: 10px;
+			display: inline-block;
+
+			a {
+				display: inline-block;
+				width: 100%;
+				word-wrap: break-word;
+				text-align: center;
+			}
 		}
 	}
 
+	.search {
+		max-width: 350px;
+		border: none;
+	}
+
 	.image {
-		width: 105px;
-		height: 105px;
+		width: 100px;
+		height: 100px;
 		@include border-radius(100px);
 		position: relative;
 		border: 2px solid #FFF;
 		margin-bottom: 10px;
-		padding: 5px;
 		
 		img {
 			width: 100%;
 			height: 100%;
+			@include border-radius(100px);
+		}
+
+		.delete {
+			position: absolute;
+			top: 50%;
+			right: -35px;
+			margin-top: -9px;
+			color: #FFF;
+			font-size: 18px;
 		}
 	}
 }

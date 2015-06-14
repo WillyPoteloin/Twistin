@@ -16,6 +16,7 @@
 				<br/>
 				<div ng-hide="!media.img" class="image">
 					<img ng-src="{{media.img}}" alt="Image du média">
+					<a class="delete" href="" title="supprimer l'image" ng-click="imgDelete();"><span class="fa fa-trash-o"></span></a>
 				</div>
 				<input type="file" nv-file-select uploader="uploader" name="form_image" id="form_image">
 			</form>

@@ -1,0 +1,14 @@
+<div class="row" ng-controller="channels">
+	<div class="columns small-12" style="margin-top:50px;">
+		<input class="search" type="text" placeholder="Recherche" ng-model="keyword"/>
+		<a href="manager/#/channels/add" class="button small" style="float:right">Ajouter une chaine</a>
+		<h1>Liste des chaines :</h1>
+		<ul ng-show="channels">
+			<li ng-repeat='channel in channels | orderBy : nom | filter : {nom : keyword} as results'>
+				<div class="image"><img ng-hide="!channel.img" ng-src="{{channel.img}}"></div>
+				<a href="/manager/#/channels/{{channel._id}}">{{channel.nom}} ({{channel.url}})</a>
+			</li>
+		</ul>
+		<p ng-show="results.length == 0" class="no_items">Il n'y a aucune chaine.</p>
+	</div>
+</div>

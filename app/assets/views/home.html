@@ -17,7 +17,7 @@
 	<div class="row first_after_header">
 		<div class="columns small-12 medium-8 small-centered channels" id="channels">
 			<!-- on affiche les images des différent channels -->
-			<span class="channel" ng-repeat="channel in filterChannels = (channels | limitTo : 13 | filter : {name: keyword})"><img title="{{channel.name}}" ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
+			<span class="channel" ng-repeat="channel in filterChannels = (channels | limitTo : limit | filter : {name: keyword})"><img title="{{channel.name}}" ng-src="{{channel.image}}" alt="{{channel.description}}"></span>
 			<div class="no_result no_drag" ng-hide="filterChannels.length">
 				<span class="channel"></span>
 				<p>Il n'y a aucune chaine correspondante à votre recherche.</p>

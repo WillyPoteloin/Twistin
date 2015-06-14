@@ -1,0 +1,34 @@
+@include respond-to('small') {
+	body {
+		.content {
+			.header {
+				.site-title {
+					font-size: 21px;
+				}
+				.site-social {
+					a {
+						font-size: 20px;
+						margin-left: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+@include respond-to('very-small') {
+	body {
+		.content {
+			.header {
+				.site-title {
+					font-size: 18px;
+				}
+				.site-social {
+					a {
+						font-size: 15px;
+						margin-left: 5px;
+					}
+				}
+			}
+		}
+	}
+}

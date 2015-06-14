@@ -117,6 +117,10 @@ app.value('keyword', '');
 var app = angular.module('app');
 
 app.controller('channels', function ($scope) {
+
+	// nombre de chaine à afficher selon la taille de l'écran
+	$scope.limit = (Modernizr.mq('only all and (max-width: 25em)')) ? 6 : 13;
+
 	$scope.channels = [
 		{
 			name: 'Maxime Musqua',

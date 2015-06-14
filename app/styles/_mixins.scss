@@ -1,7 +1,19 @@
+@mixin respond-to($breakpoint) {
+	$media: map-get($breakpoints, $breakpoint);
+
+	@if not $media {
+		@error "No query could be retrieved from `#{$breakpoint}`. "
+		+ "Please make sure it is defined in `$breakpoints` map.";
+	}
+
+	@media #{inspect($media)} {
+		@content;
+	}
+};
 @mixin shake ($duration: 1s) {
 	animation-name: shake;
 	animation-duration: $duration;
 	transform-origin:50% 50%;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
-}
+};
